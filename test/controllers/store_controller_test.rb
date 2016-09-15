@@ -15,4 +15,11 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
 
     assert_select '#counter', 'Hey, you have viewed our catalog 6 times. Do you need any help?'
   end
+
+  test "markup needed for store.js.coffe is in place" do
+    get store_index_url
+
+    assert_select '.store .entry > img', 4
+    assert_select '.entry input[type=submit]', 4
+  end
 end
